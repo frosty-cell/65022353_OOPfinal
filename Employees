@@ -1,0 +1,124 @@
+import java.util.ArrayList;
+
+public class finaltest65022353 {
+    public static void main(String[] args) {
+        ArrayList<Project> projectsE1 = new ArrayList<Project>();
+        projectsE1.add(new Project("Web A", "Developing a web application"));
+        projectsE1.add(new Project("Mobile app A", "Developing a mobile application"));
+
+        ArrayList<Project> projectsE2 = new ArrayList<Project>();
+        projectsE2.add(new Project("Web A", "Developing another web application"));
+
+        Employee e1 = new Employee("Tom", 20, "UX/UI", "0001", projectsE1);
+        e1.showDetail();
+
+        Employee e2 = new Employee("Tim", 20, "FrontEnd", "0002", projectsE2);
+        e2.showDetail();
+    }
+}
+
+interface Person {
+    String getName();
+
+    void setName(String name);
+
+    int getAge();
+
+    void setAge(int age);
+}
+
+interface Job {
+    String getPosition();
+
+    void setPosition(String position);
+
+    String getEmpID();
+
+    void setEmpID(String empID);
+}
+
+class Project {
+    private String projectName;
+    private String description;
+
+    public Project(String projectName, String description) {
+        this.projectName = projectName;
+        this.description = description;
+    }
+
+    public String getProjectName() {
+        return projectName;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+}
+
+class Employee implements Person, Job {
+    private String Name;
+    private int Age;
+    private String Position;
+    private String EmpID;
+    private ArrayList<Project> projects;
+
+    Employee(String name, int age, String position, String empID, ArrayList<Project> projects) {
+        this.Name = name;
+        this.Age = age;
+        this.Position = position;
+        this.EmpID = empID;
+        this.projects = projects;
+    }
+
+    @Override
+    public void setName(String name) {
+        this.Name = name;
+    }
+
+    @Override
+    public void setAge(int age) {
+        this.Age = age;
+    }
+
+    @Override
+    public void setPosition(String position) {
+        this.Position = position;
+    }
+
+    @Override
+    public void setEmpID(String empID) {
+        this.EmpID = empID;
+    }
+
+    @Override
+    public String getName() {
+        return Name;
+    }
+
+    @Override
+    public int getAge() {
+        return Age;
+    }
+
+    @Override
+    public String getPosition() {
+        return Position;
+    }
+
+    @Override
+    public String getEmpID() {
+        return EmpID;
+    }
+
+    public void showDetail() {
+        System.out.println("*********************");
+        System.out.println("Name: " + getName());
+        System.out.println("Age: " + getAge());
+        System.out.println("Position: " + getPosition());
+        System.out.println("Employee ID: " + getEmpID());
+        System.out.println("Projects:");
+        for (Project project : projects) {
+            System.out.println("   - " + project.getProjectName() + ": " + project.getDescription());
+        }
+    }
+}
